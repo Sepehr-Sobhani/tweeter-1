@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c7ec46e22f.js" crossorigin="anonymous"></script>
+  <!-- App CSS -->
+  <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- App JS -->
+</head>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-  </head>
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span>tweeter</span>
+    <div class="container">
+      <span>Write a tweet</span>
+      <button />
+      <i class="fas fa-angle-double-down"></i>
+      </button>
+    </div>
+  </nav>
+  <header>
+    <div>
+      <img class="profile-image" src="./images/ebu.png">
+    </div>
+    <br>
+    <div>
+      <span>Eddy</span> Bussiere
+    </div>
+  </header>
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>tweeter</span>
-    </nav>
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <section class="new-tweet">
+      <!-- <h2>Compose Tweet</h2> -->
+      <form method="POST" action="/tweets">
+        <div class="tweet-input">
+          <label for="tweet-text" id="tweet-prompt">What are you humming about?</label>
+          <textarea name="text" placeholder="Hello World" id="tweet-text"></textarea>
+        </div>
+        <div class="tweet-action">
+          <button id="tweet-btn" type="submit">Tweet</button>
+          <output id="count" name="counter" class="counter" for="tweet-text">0</output>
+        </div>
+      </form>
+    </section>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container"></main>
-  </body>
+    <section class="tweet-container">
+      <!-- <article class="tweet">
+        <div class="tweet-header">
+          <div class="author">
+            <div class="author-avatar">
+              <i class="fas fa-user-ninja fa-3x"></i>
+            </div>
+            <div class="author-name">
+              Eddy Bussiere
+            </div>
+          </div>
+          <div class="author-handle">
+            @ebussiere
+          </div>
+        </div>
+        <div class="tweet-body">
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, architecto!</p>
+        </div>
+        <div class="tweet-footer">
+          <div class="tweet-age">
+            5 days ago
+          </div>
+          <div class="tweet-actions">
+            <i class="fas fa-flag fa-xs"></i>
+            <i class="fas fa-retweet fa-xs"></i>
+            <i class="fas fa-heart fa-xs"></i>
+          </div>
+        </div>
+      </article> -->
+    </section>
+  </main>
+  <script type="text/javascript" src="./scripts/client.js"></script>
+</body>
+
 </html>
