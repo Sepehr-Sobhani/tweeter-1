@@ -1,31 +1,6 @@
 const maxTweetLength = 140;
 const count = document.querySelector("#count");
 const $tweetContainer = document.querySelector(".tweet-container");
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd"
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
 
 /*
  * Client-side JS logic goes here
@@ -48,8 +23,14 @@ $(document).ready(function() {
 
   $("#tweet-form").submit(event => {
     event.preventDefault();
-    const search = $("#tweet-field").val();
-    console.log(search);
+    var str = $("#tweet-form").serialize();
+    $.post({ url: `${ROOT_URL}tweets/` }, str)
+      .then((res) => {
+        renderTweets(dbData());
+      })
+      .fail((err) => {
+        console.log("Error retieving tweets");
+      });
   });
 
 
@@ -65,6 +46,8 @@ $(document).ready(function() {
 
 
   const renderTweets = function(tweets) {
+    $("#tweet-field").val("");
+    $(".tweet-container").empty();
     for (const key in tweets) {
       const tweet = tweets[key];
       const tweetToRender = createTweetElement(tweet);
@@ -72,13 +55,7 @@ $(document).ready(function() {
     }
   };
 
-  const renderTweets = function(tweets) {
-    for (const key in tweets) {
-      const tweet = tweets[key];
-      const tweetToRender = createTweetElement(tweet);
-      $(".tweet-container").append(tweetToRender);
-    }
-  };
+
 
   const createTweetElement = function(tweet) {
     let $tweet = ` <article class="tweet">
