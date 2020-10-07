@@ -21,16 +21,16 @@
   <!-- Top nav bar (fixed) -->
   <nav>
     <span>tweeter</span>
-    <div class="container">
+    <section>
       <span>Write a tweet</span>
       <button />
       <i class="fas fa-angle-double-down"></i>
       </button>
-    </div>
+    </section>
   </nav>
   <header>
     <div>
-      <img class="profile-image" src="./images/ebu.png">
+      <img src="./images/ebu.png">
     </div>
     <br>
     <div>
@@ -42,10 +42,10 @@
   <main class="container">
     <section class="new-tweet">
       <!-- <h2>Compose Tweet</h2> -->
-      <form method="POST" action="/tweets">
+      <form id="tweet-form" method="POST" action="/tweets">
         <div class="tweet-input">
           <label for="tweet-text" id="tweet-prompt">What are you humming about?</label>
-          <textarea name="text" placeholder="Hello World" id="tweet-text"></textarea>
+          <textarea name="tweet-text" placeholder="Hello World" id="tweet-field"></textarea>
         </div>
         <div class="tweet-action">
           <button id="tweet-btn" type="submit">Tweet</button>
@@ -53,36 +53,7 @@
         </div>
       </form>
     </section>
-
     <section class="tweet-container">
-      <!-- <article class="tweet">
-        <div class="tweet-header">
-          <div class="author">
-            <div class="author-avatar">
-              <i class="fas fa-user-ninja fa-3x"></i>
-            </div>
-            <div class="author-name">
-              Eddy Bussiere
-            </div>
-          </div>
-          <div class="author-handle">
-            @ebussiere
-          </div>
-        </div>
-        <div class="tweet-body">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, architecto!</p>
-        </div>
-        <div class="tweet-footer">
-          <div class="tweet-age">
-            5 days ago
-          </div>
-          <div class="tweet-actions">
-            <i class="fas fa-flag fa-xs"></i>
-            <i class="fas fa-retweet fa-xs"></i>
-            <i class="fas fa-heart fa-xs"></i>
-          </div>
-        </div>
-      </article> -->
     </section>
   </main>
   <script type="text/javascript" src="./scripts/client.js"></script>

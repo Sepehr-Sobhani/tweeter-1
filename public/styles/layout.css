@@ -24,7 +24,7 @@ html {
 
  
  */
- body {
+body {
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -37,6 +37,4 @@ body main{
 width:90%
 }
 
-header span{
-font-weight: bold;
-}
+
