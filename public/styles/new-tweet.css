@@ -21,7 +21,7 @@ form{
   flex-direction: column;
 }
 
-#tweet-text{
+#tweet-field{
   font-weight: 300;
   border: none;
   outline: none;
@@ -49,6 +49,12 @@ form{
   box-shadow:2px 5px 8px #888888
 }
 
+#tweet-btn:disabled{
+box-shadow: none;
+background-color:gray;
+ cursor: default;
+}
+
 .tweet-action{
   display: flex;
   justify-content: space-between;
@@ -56,4 +62,16 @@ form{
 
 .counter{
   font-family: 'Bungee', sans-serif;
+}
+
+.tweet-error{
+display:flex;
+justify-content: space-around;
+
+margin: auto;
+margin-bottom:20px;
+width: 100%;
+align-items: center;
+color: white;
+background-color: #4056A1;
 }

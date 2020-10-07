@@ -10,17 +10,33 @@ const $tweetContainer = document.querySelector(".tweet-container");
 
 $(document).ready(function() {
   const ROOT_URL = "http://localhost:8080/";
+  let charCount = 0;
   count.value = maxTweetLength;
-  $("#tweet-text").on('input', function() {
-    let charCount = this.value.length;
+
+
+  const validateInput = function(charCount) {
     count.value = maxTweetLength - charCount;
-    if (charCount > maxTweetLength) {
+    if (charCount === 0) {
+      $("#tweet-btn").attr("disabled", true);
+      $(".tweet-error").css("height", 0);
+    } else if (charCount > maxTweetLength) {
       $(count).css("color", "red");
+      $("#tweet-btn").attr("disabled", true);
+      $(".tweet-error").css("height", 50);
     } else {
       $(count).css("color", "black");
+      $("#tweet-btn").attr("disabled", false);
+      $(".tweet-error").css("height", 0);
     }
+  };
+
+  // validateInput(charCount);
+  $("#tweet-field").on('input', function() {
+    charCount = this.value.length;
+    validateInput(charCount);
   });
 
+  validateInput(0);
   $("#tweet-form").submit(event => {
     event.preventDefault();
     var str = $("#tweet-form").serialize();
@@ -55,29 +71,33 @@ $(document).ready(function() {
     }
   };
 
-
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   const createTweetElement = function(tweet) {
     let $tweet = ` <article class="tweet">
         <div class="tweet-header">
           <div class="author">
             <div class="author-avatar">
-              <img src="${tweet.user.avatars}" alt="Girl in a jacket" width="50" height="50">
+              <img src="${escape(tweet.user.avatars)}" alt="Girl in a jacket" width="50" height="50">
             </div>
             <div class="author-name">
-              ${tweet.user.name}
+              ${escape(tweet.user.name)}
             </div>
           </div>
           <div class="author-handle">
-            ${tweet.user.handle}
+            ${escape(tweet.user.handle)}
           </div>
         </div>
         <div class="tweet-body">
-          <p>${tweet.content.text}</p>
+          <p>${escape(tweet.content.text)}</p>
         </div>
         <div class="tweet-footer">
           <div class="tweet-age">
-            <p>${tweet.created_at}</p>
+            <p>${escape(tweet.created_at)}</p>
           </div>
           <div class="tweet-actions">
             <i class="fas fa-flag fa-xs"></i>
