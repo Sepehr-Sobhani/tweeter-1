@@ -24,6 +24,8 @@ font-size: 24px;
 font-family: 'Source Sans Pro', sans-serif;
 }
 
+
+
 main{
 display: flex;
 flex-direction: column;
@@ -44,7 +46,7 @@ padding: 20px;
   
   }
   
-  .scrollUp{
+  #bottom-toggle{
   font-family: 'Bungee', sans-serif;
   position: fixed;
   right: 50px;
@@ -59,7 +61,7 @@ padding: 20px;
   cursor: pointer;
 }
 
-.scrollUp:hover{
+#bottom-toggle:hover{
   background-color:#5F80ED;
   box-shadow:2px 5px 8px #888888
 }

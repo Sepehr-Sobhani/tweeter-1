@@ -1,14 +1,23 @@
-
-// const $tweetContainer = document.querySelector(".tweet-container");
-
+const ROOT_URL = "http://localhost:8080/";
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
 $(document).ready(function() {
-  const ROOT_URL = "http://localhost:8080/";
+  $("#top-toggle").on("click", function() {
+    $(".compose").toggle("fast", function() {
+    });
+  });
+
+  $("#bottom-toggle").on("click", function() {
+    $(".compose").css("display", "block");
+    var position = $("#main").offset().top;
+    $("body, html").animate({
+      scrollTop: position
+    });
+  });
+
   $("#tweet-btn").attr("disabled", true);
   $("#tweet-form").submit(event => {
     event.preventDefault();
@@ -83,14 +92,6 @@ $(document).ready(function() {
       </article>`;
     return $tweet;
   };
-
-  $(".scrollUp").click(function(event) {
-    event.preventDefault();
-    var position = $("#main").offset().top;
-    $("body, html").animate({
-      scrollTop: position
-    } /* speed */);
-  });
 
   renderTweets(dbData());
 });

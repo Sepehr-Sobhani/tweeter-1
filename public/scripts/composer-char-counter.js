@@ -1,36 +1,28 @@
-const maxTweetLength = 140;
-const count = document.querySelector("#count");
-
+$(document).ready(function() {
+  $(".tweet-error").css("height", 0);
+  $("#tweet-field").on('input', function() {
+    validateInput(this.value.length);
+  });
+  validateInput(0);
+});
 const validateInput = function(charCount) {
-  count.value = maxTweetLength - charCount;
-  if (charCount === 0) {
+  const maxTweetLength = 140;
+  $("#count").val(maxTweetLength - charCount);
+  if (charCount === 0 || charCount > maxTweetLength) {
     $("#tweet-btn").attr("disabled", true);
-  } else if (charCount > maxTweetLength) {
-    $(count).css("color", "red");
-    $("#tweet-btn").attr("disabled", true);
-    $(".tweet-error").slideDown("fast", function() {
-    });
+    if (charCount > maxTweetLength) {
+      $("#count").css("color", "red");
+      $(".tweet-error").slideDown("fast", function() {
+        $(".tweet-error").css("display", "flex");
+      });
+    }
   } else {
-    $(count).css("color", "black");
+    $("#count").css("color", "black");
     $("#tweet-btn").attr("disabled", false);
+    $(".tweet-error").css("height", 0);
     $(".tweet-error").slideUp("fast", function() {
     });
   }
 };
-$(document).ready(function() {
 
-  let charCount = 0;
-  //count.value = maxTweetLength;
-  $(".tweet-error").slideUp("fast", function() {
-    $(".tweet-error").css("height", 50);
-  });
-
-
-  $("#tweet-field").on('input', function() {
-    charCount = this.value.length;
-    validateInput(charCount);
-  });
-
-  validateInput(0);
-});
 

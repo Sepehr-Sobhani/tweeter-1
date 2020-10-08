@@ -1,23 +1,52 @@
 header{
 margin-top: 70px;
 display: flex;
-flex-direction: column;
+justify-content: center;
 align-items: center;
 height: 400px;
-
-background-color:#7B88B0;
-background-image: url("../images/brushed-alum.png");
-color: white;
 font-size: 2rem ;
-flex-basis: 50%;
+flex:1;
 }
 
+header .inner{
+display: flex;
+flex-direction: column;
+flex: 1;
+justify-content: center;
+align-items: center;
+border-radius: 10px;
+color: white;
+background-color:#7B88B0;
+background-image: url("../images/brushed-alum.png");
+}
 header img{
 width: 200px;
 height:275px;
 }
-
 header span{
 font-weight: bold;
 }
+
+ @media only screen and (min-width: 768px) {
+  header{
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 2rem ;
+}
+    
+  header .inner{
+    flex:.5;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    background-color:#7B88B0;
+    background-image: url("../images/brushed-alum.png");
+  }
+}
+
+
 
