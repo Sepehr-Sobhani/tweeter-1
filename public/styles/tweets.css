@@ -73,3 +73,9 @@
 .tweet-actions i::before{
   background:transparent;
 }
+
+.history{
+display:flex;
+flex-direction: column-reverse;
+
+}

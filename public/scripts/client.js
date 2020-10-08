@@ -1,4 +1,5 @@
 const ROOT_URL = "http://localhost:8080/";
+const DateTime = luxon.DateTime;
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -61,6 +62,22 @@ $(document).ready(function() {
     return div.innerHTML;
   };
 
+  const tweetElapsedTime = function(jsDate) {
+    let result = "";
+    let posted = DateTime.fromMillis(jsDate);
+    let now = DateTime.fromMillis(Date.now());
+    let elapsedTimeObject = now.diff(posted, ['days', 'hours', 'minutes']);
+    let daysElapsed = elapsedTimeObject.values.days;
+    if (daysElapsed > 5) {
+      result = posted.toLocaleString();
+    } else if (daysElapsed > 1 && daysElapsed < 5) {
+      result = "a few days ago";
+    } else {
+      result = "recently";
+    }
+    return result;
+  };
+
   const createTweetElement = function(tweet) {
     let $tweet = `<article class="tweet">
         <div class="tweet-header">
@@ -81,7 +98,7 @@ $(document).ready(function() {
         </div>
         <div class="tweet-footer">
           <div class="tweet-age">
-            <p>${escape(tweet.created_at)}</p>
+            <p>Posted ${escape(tweetElapsedTime(tweet.created_at))}</p>
           </div>
           <div class="tweet-actions">
             <i class="fas fa-flag fa-xs"></i>
