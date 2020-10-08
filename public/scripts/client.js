@@ -1,6 +1,5 @@
-const maxTweetLength = 140;
-const count = document.querySelector("#count");
-const $tweetContainer = document.querySelector(".tweet-container");
+
+// const $tweetContainer = document.querySelector(".tweet-container");
 
 /*
  * Client-side JS logic goes here
@@ -10,40 +9,7 @@ const $tweetContainer = document.querySelector(".tweet-container");
 
 $(document).ready(function() {
   const ROOT_URL = "http://localhost:8080/";
-  let charCount = 0;
-  count.value = maxTweetLength;
-  $(".tweet-error").slideUp("fast", function() {
-    $(".tweet-error").css("height", 50);
-  });
-
-  const validateInput = function(charCount) {
-    count.value = maxTweetLength - charCount;
-    if (charCount === 0) {
-      $("#tweet-btn").attr("disabled", true);
-    } else if (charCount > maxTweetLength) {
-      $(count).css("color", "red");
-      $("#tweet-btn").attr("disabled", true);
-      //$(".tweet-error").css("height", 50);
-      $(".tweet-error").slideDown("fast", function() {
-        // Animation complete.
-      });
-    } else {
-      $(count).css("color", "black");
-      $("#tweet-btn").attr("disabled", false);
-      //$(".tweet-error").css("height", 0);
-      $(".tweet-error").slideUp("fast", function() {
-        // Animation complete.
-      });
-    }
-  };
-
-  // validateInput(charCount);
-  $("#tweet-field").on('input', function() {
-    charCount = this.value.length;
-    validateInput(charCount);
-  });
-
-  validateInput(0);
+  $("#tweet-btn").attr("disabled", true);
   $("#tweet-form").submit(event => {
     event.preventDefault();
     var str = $("#tweet-form").serialize();
@@ -51,11 +17,13 @@ $(document).ready(function() {
       .then((res) => {
         renderTweets(dbData());
       })
+      .then((res) => {
+        validateInput(0);
+      })
       .fail((err) => {
         console.log("Error retieving tweets");
       });
   });
-
 
   const dbData = function() {
     $.ajax({ url: `${ROOT_URL}tweets/` })
