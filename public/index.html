@@ -4,7 +4,7 @@
 <head>
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
-
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   <!-- External CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap" rel="stylesheet">
@@ -23,44 +23,51 @@
     <span>tweeter</span>
     <section>
       <span>Write a tweet</span>
-      <button />
-      <i class="fas fa-angle-double-down"></i>
+      <button>
+        <i class="fas fa-angle-double-down"></i>
       </button>
     </section>
   </nav>
-  <header>
-    <div>
-      <img src="./images/ebu.png">
-    </div>
-    <br>
-    <div>
-      <span>Eddy</span> Bussiere
-    </div>
-  </header>
 
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-    <section class="new-tweet">
-      <div class="tweet-error">
-        <i class="fas fa-exclamation-circle fa-lg"></i>
-        <p>Your tweet is too long.</p>
-        <i class="fas fa-exclamation-circle fa-lg"></i>
+  <main id="main">
+    <!-- <section class="header-container"> -->
+    <header>
+      <div>
+        <img src="./images/ebu.png">
       </div>
-      <!-- <h2>Compose Tweet</h2> -->
-      <form id="tweet-form" method="POST" action="/tweets">
-        <div class="tweet-input">
-          <label for="tweet-field" id="tweet-prompt">What are you humming about?</label>
-          <textarea name="text" placeholder="Hello World" id="tweet-field"></textarea>
+      <br>
+      <div>
+        <span>Eddy</span> Bussiere
+      </div>
+    </header>
+    <!-- </section> -->
+    <!-- Page-specific (main) content here -->
+    <section class="tweets">
+      <div class="compose">
+        <div class="tweet-error">
+          <i class="fas fa-exclamation-circle fa-lg"></i>
+          <p>Your tweet is too long.</p>
+          <i class="fas fa-exclamation-circle fa-lg"></i>
         </div>
-        <div class="tweet-action">
-          <button id="tweet-btn" type="submit">Tweet</button>
-          <output id="count" name="counter" class="counter" for="tweet-text">0</output>
-        </div>
-      </form>
-    </section>
-    <section class="tweet-container">
+        <!-- <h2>Compose Tweet</h2> -->
+        <form id="tweet-form" method="POST" action="/tweets">
+          <div class="tweet-input">
+            <label for="tweet-field" id="tweet-prompt">What are you humming about?</label>
+            <textarea name="text" placeholder="Hello World" id="tweet-field"></textarea>
+          </div>
+          <div class="tweet-action">
+            <button id="tweet-btn" type="submit">Tweet</button>
+            <output id="count" name="counter" class="counter" for="tweet-text">0</output>
+          </div>
+        </form>
+      </div>
+      <div class="history">
+      </div>
     </section>
   </main>
+  <button class="scrollUp">
+    <i class="fas fa-angle-double-up"></i>
+  </button>
   <script type="text/javascript" src="./scripts/client.js"></script>
 </body>
 

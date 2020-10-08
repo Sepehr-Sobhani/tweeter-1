@@ -12,21 +12,28 @@ $(document).ready(function() {
   const ROOT_URL = "http://localhost:8080/";
   let charCount = 0;
   count.value = maxTweetLength;
-
+  $(".tweet-error").slideUp("fast", function() {
+    $(".tweet-error").css("height", 50);
+  });
 
   const validateInput = function(charCount) {
     count.value = maxTweetLength - charCount;
     if (charCount === 0) {
       $("#tweet-btn").attr("disabled", true);
-      $(".tweet-error").css("height", 0);
     } else if (charCount > maxTweetLength) {
       $(count).css("color", "red");
       $("#tweet-btn").attr("disabled", true);
-      $(".tweet-error").css("height", 50);
+      //$(".tweet-error").css("height", 50);
+      $(".tweet-error").slideDown("fast", function() {
+        // Animation complete.
+      });
     } else {
       $(count).css("color", "black");
       $("#tweet-btn").attr("disabled", false);
-      $(".tweet-error").css("height", 0);
+      //$(".tweet-error").css("height", 0);
+      $(".tweet-error").slideUp("fast", function() {
+        // Animation complete.
+      });
     }
   };
 
@@ -63,11 +70,11 @@ $(document).ready(function() {
 
   const renderTweets = function(tweets) {
     $("#tweet-field").val("");
-    $(".tweet-container").empty();
+    $(".tweets .history").empty();
     for (const key in tweets) {
       const tweet = tweets[key];
       const tweetToRender = createTweetElement(tweet);
-      $(".tweet-container").append(tweetToRender);
+      $(".tweets .history").append(tweetToRender);
     }
   };
 
@@ -78,7 +85,7 @@ $(document).ready(function() {
   };
 
   const createTweetElement = function(tweet) {
-    let $tweet = ` <article class="tweet">
+    let $tweet = `<article class="tweet">
         <div class="tweet-header">
           <div class="author">
             <div class="author-avatar">
@@ -106,9 +113,16 @@ $(document).ready(function() {
           </div>
         </div>
       </article>`;
-
     return $tweet;
   };
+
+  $(".scrollUp").click(function(event) {
+    event.preventDefault();
+    var position = $("#main").offset().top;
+    $("body, html").animate({
+      scrollTop: position
+    } /* speed */);
+  });
 
   renderTweets(dbData());
 });

@@ -17,6 +17,7 @@ form{
 }
 
 .tweet-input{
+padding-top: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -67,11 +68,16 @@ background-color:gray;
 .tweet-error{
 display:flex;
 justify-content: space-around;
-
+height:0;
+padding: 30px;
 margin: auto;
-margin-bottom:20px;
 width: 100%;
 align-items: center;
 color: white;
 background-color: #4056A1;
+border-radius:40px;
 }
+
+@media only screen and (min-width: 1024px) {
+    
+  }
