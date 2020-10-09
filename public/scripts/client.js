@@ -1,6 +1,7 @@
 const ROOT_URL = "http://localhost:8080/";
 
 $(document).ready(function() {
+  //$(".compose").css("display", "none");
   $("nav button").on("click", function() {
     $(".compose").toggle("fast");
   });
