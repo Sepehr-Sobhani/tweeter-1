@@ -1,9 +1,11 @@
+
 * {
   box-sizing: border-box;
 }
 
 .compose{
- display: block;
+ display: none;
+ margin:0px 20px;
 }
 
 .compose form{
@@ -81,4 +83,3 @@ color: white;
 background-color: #4056A1;
 border-radius:40px;
 }
-
