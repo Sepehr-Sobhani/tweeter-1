@@ -1,23 +1,22 @@
 const ROOT_URL = "http://localhost:8080/";
 
 $(document).ready(function() {
-  $("#top-toggle").on("click", function() {
-    $(".compose").toggle("fast", function() {
-    });
+  $("nav button").on("click", function() {
+    $(".compose").toggle("fast");
   });
 
-  $("#bottom-toggle").on("click", function() {
+  $(".bottom-toggle").on("click", function() {
     $(".compose").css("display", "block");
-    var position = $("#main").offset().top;
+    var position = $("main").offset().top;
     $("body, html").animate({
       scrollTop: position
     });
   });
 
-  $("#tweet-btn").attr("disabled", true);
-  $("#tweet-form").submit(event => {
+  $(".tweet-btn").attr("disabled", true);
+  $(".compose form").submit(event => {
     event.preventDefault();
-    var str = $("#tweet-form").serialize();
+    var str = $(".compose form").serialize();
     $.post({ url: `${ROOT_URL}tweets/` }, str)
       .then((res) => {
         renderTweets(dbData());

@@ -11,7 +11,6 @@
   <script src="https://kit.fontawesome.com/c7ec46e22f.js" crossorigin="anonymous"></script>
   <!-- App CSS -->
   <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
-
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- App JS -->
@@ -23,13 +22,13 @@
     <span>tweeter</span>
     <section>
       <span>Write a tweet</span>
-      <button id="top-toggle">
+      <button>
         <i class="fas fa-angle-double-down"></i>
       </button>
     </section>
   </nav>
 
-  <main id="main">
+  <main>
     <!-- <section class="header-container"> -->
     <header>
       <div class="inner">
@@ -43,31 +42,33 @@
     <!-- Page-specific (main) content here -->
     <section class="tweets">
       <div class="compose">
-        <div class="tweet-error">
+        <div class="error">
           <i class="fas fa-exclamation-circle fa-lg"></i>
           <p>Your tweet is too long.</p>
           <i class="fas fa-exclamation-circle fa-lg"></i>
         </div>
         <!-- <h2>Compose Tweet</h2> -->
-        <form id="tweet-form" method="POST" action="/tweets">
+        <form method="POST" action="/tweets">
           <div class="tweet-input">
-            <label for="tweet-field" id="tweet-prompt">What are you humming about?</label>
+            <label for="tweet-field">What are you humming about?</label>
             <textarea name="text" placeholder="Hello World" id="tweet-field"></textarea>
           </div>
-          <div class="tweet-action">
-            <button id="tweet-btn" type="submit">Tweet</button>
-            <output id="count" name="counter" class="counter" for="tweet-text">0</output>
-          </div>
+          <footer>
+            <button class="tweet-btn" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">0</output>
+          </footer>
         </form>
       </div>
       <div class="history">
+
       </div>
     </section>
   </main>
-  <button id="bottom-toggle">
-    <i class="fas fa-angle-double-up"></i>
-  </button>
-
+  <footer>
+    <button class="bottom-toggle">
+      <i class="fas fa-angle-double-up"></i>
+    </button>
+  </footer>
   <script type="text/javascript" src="./vendor/luxon.js"></script>
   <script type="text/javascript" src="./scripts/helpers.js"></script>
   <script type="text/javascript" src="./scripts/tweet-factory.js"></script>

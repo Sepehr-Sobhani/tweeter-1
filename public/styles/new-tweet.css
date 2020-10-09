@@ -6,7 +6,7 @@
  display: block;
 }
 
-form{
+.compose form{
   display: flex;  
   width: inherit;
   flex-direction: column;
@@ -33,11 +33,11 @@ padding-top: 20px;
   border-bottom: 4px solid black;
 }
 
-#tweet-prompt{
+.compose label{
   font-weight: 700;
 }
 
-#tweet-btn{
+.tweet-btn{
   font-family: 'Bungee', sans-serif;
   width: 200;
   height: 100;
@@ -49,27 +49,27 @@ padding-top: 20px;
   cursor: pointer;
 }
 
-#tweet-btn:hover{
+.tweet-btn:hover{
   background-color:#5F80ED;
   box-shadow:2px 5px 8px #888888
 }
 
-#tweet-btn:disabled{
+.tweet-btn:disabled{
 box-shadow: none;
 background-color:gray;
  cursor: default;
 }
 
-.tweet-action{
+.compose form footer{
   display: flex;
   justify-content: space-between;
 }
 
-.counter{
+.compose form footer output{
   font-family: 'Bungee', sans-serif;
 }
 
-.tweet-error{
+.compose .error{
 display:none;
 justify-content: space-around;
 height:0;
