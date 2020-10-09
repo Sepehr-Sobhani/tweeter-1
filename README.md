@@ -34,10 +34,6 @@ npm install
 ```
 - Run the development web server 
 ```bash
-node express_server.js
-```
-or to run using nodemon
-```bash
 npm start
 ```
 App runs at: http://localhost:8080/
