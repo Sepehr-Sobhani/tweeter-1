@@ -1,4 +1,5 @@
 const ROOT_URL = "http://localhost:8080/";
+//const ROOT_URL = "https://embtweeter.azurewebsites.net/";
 
 $(document).ready(function() {
   // Display new tweet form
@@ -8,7 +9,7 @@ $(document).ready(function() {
   // Toggle buttun to scroll up page and open new tweet form
   $(".bottom-toggle").on("click", function() {
     $(".compose").css("display", "block");
-    var position = $("main").offset().top;
+    const position = $("main").offset().top;
     $("body, html").animate({
       scrollTop: position
     });
@@ -18,7 +19,7 @@ $(document).ready(function() {
   $(".tweet-btn").attr("disabled", true);
   $(".compose form").submit(event => {
     event.preventDefault();
-    var str = $(".compose form").serialize();
+    const str = $(".compose form").serialize();
     $.post({ url: `${ROOT_URL}tweets/` }, str)
       .then((res) => {
         // Retrieve new tweet list after submitting new

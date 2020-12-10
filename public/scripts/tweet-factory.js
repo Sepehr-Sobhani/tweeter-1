@@ -1,6 +1,6 @@
 //Create a new "Tweet" <article/> using string literal syntax.
 const createTweetElement = function(tweet) {
-  let $tweet = `<article class="tweet">
+  const $tweet = `<article class="tweet">
         <div class="tweet-header">
           <div class="author">
             <div class="author-avatar">
